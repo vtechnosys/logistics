@@ -9,7 +9,18 @@ use App\Http\Controllers\MovingTipsController;
 use App\Http\Controllers\PackingMaterialController;
 use App\Http\Controllers\PackingMethosController;
 use App\Http\Controllers\ClientController;
-
+use App\Http\Controllers\OverviewController;
+use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\VisionMissionController;
+use App\Http\Controllers\EnvisioningController;
+use App\Http\Controllers\MilestonesController;
+use App\Http\Controllers\WarehousingController;
+use App\Http\Controllers\TranspportationController;
+use App\Http\Controllers\LiquidController;
+use App\Http\Controllers\FreightController;
+use App\Http\Controllers\DryPortsController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CelebrationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,19 +35,26 @@ use App\Http\Controllers\ClientController;
 Route::get('/', function () {
     return view('welcome');
 });
+/** Backend Routes **/
 Route::get('admin',function(){
     return view('backend.index');
 });
 Route::get('logout',function(){
     return redirect('/');
 });
+/** About **/
 Route::resource('about_details',AboutController::class);
+Route::resource('overview_details',OverviewController::class);
+Route::resource('management_details',ManagementController::class);
+Route::resource('vision_and_mission',VisionMissionController::class);
+Route::resource('envisioning_details',EnvisioningController::class);
+Route::resource('milestones_achievements',MilestonesController::class);
+/** End About **/
+
 Route::resource('service_details',ServiceController::class);
 Route::resource('gallery_details',GalleryController::class);
-Route::resource('testimonial',TestimonialController::class);
-Route::resource('client',ClientController::class);
-Route::resource('moving_details',MovingTipsController::class);
-Route::resource('packing_material_details',PackingMaterialController::class);
-Route::resource('packing_method_details',PackingMethosController::class);
-Route::resource('testimonial',TestimonialController::class);
-Route::resource('valuable_client',ClientController::class);
+Route::resource('testimonial_details',TestimonialController::class);
+Route::resource('client_details',ClientController::class);
+Route::resource('career_details',CareerController::class);
+Route::resource('celebration_details',CelebrationController::class);
+

@@ -14,7 +14,7 @@ class GalleryController extends Controller
     public function index()
     {
         $about=tbl_gallery::get();
-        return view('backend.display_gallery',compact('about'));
+        return view('backend.gallery.display_gallery',compact('about'));
     }
 
     /**
@@ -24,7 +24,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return view('backend.add_gallery');
+        return view('backend.gallery.add_gallery');
     }
 
     /**
@@ -70,7 +70,7 @@ class GalleryController extends Controller
     public function edit($id)
     {
         $gallery=tbl_gallery::find($id);
-        return view('backend.update_galler',compact('gallery'));
+        return view('backend.gallery.update_galler',compact('gallery'));
     }
 
     /**

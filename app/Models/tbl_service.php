@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_service extends Model
 {
     use HasFactory;
-    protected $fillable=['name','image','description','status'];
+    protected $fillable=['name','image','short_description','description','status'];
 }

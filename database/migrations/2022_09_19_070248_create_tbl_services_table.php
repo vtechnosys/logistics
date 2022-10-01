@@ -17,7 +17,8 @@ class CreateTblServicesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->string('description');
+            $table->string('short_description');
+            $table->string('description',255)->change();
             $table->string('status');
             $table->timestamps();
         });

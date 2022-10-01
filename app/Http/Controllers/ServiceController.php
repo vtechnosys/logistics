@@ -14,7 +14,7 @@ class ServiceController extends Controller
     public function index()
     {
         $about=tbl_service::get();
-        return view('backend.display_service',compact('about'));
+        return view('backend.service.display_service',compact('about'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('backend.add_service');
+        return view('backend.service.add_service');
     }
 
     /**
@@ -47,11 +47,22 @@ class ServiceController extends Controller
             $about=new tbl_service([
                 'name'=>$name,
                 'description'=>$desc,
+                'short_description'=>$request->get('short_desc'),
                 'image'=>$filename,
                 'status'=>'active'
             ]);
             $about->save();
             $files->move('backend/image/',$filename);
+        }
+        else
+        {
+            $about=new tbl_service([
+                'name'=>$name,
+                'description'=>$desc,
+                'short_description'=>$request->get('short_desc'),
+                'status'=>'active'
+            ]);
+            $about->save();
         }
         
         return redirect('/service_details');
@@ -65,7 +76,8 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        //
+        $about=tbl_service::find($id);
+        return view('backend.service.show_service',compact('about'));
     }
 
     /**
@@ -77,7 +89,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $about=tbl_service::find($id);
-        return view('backend.update_service',compact('about'));
+        return view('backend.service.update_service',compact('about'));
     }
 
     /**
@@ -98,6 +110,7 @@ class ServiceController extends Controller
             $filename=$files->getClientOriginalName();
             $about=tbl_service::find($id);
             $about->name=$name;
+            $about->short_description=$request->get('short_desc');
             $about->description=$desc;
             $about->image=$filename;
             $about->update();
@@ -107,6 +120,7 @@ class ServiceController extends Controller
         {
             $about=tbl_service::find($id);
             $about->name=$name;
+            $about->short_description=$request->get('short_desc');
             $about->description=$desc;
             $about->update();
         }

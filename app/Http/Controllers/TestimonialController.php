@@ -14,7 +14,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $about=testimonial::get();
-        return view('backend.display_testimonial',compact('about'));
+        return view('backend.testimonial.display_testimonial',compact('about'));
     }
 
     /**
@@ -24,7 +24,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        return view('backend.add_testimonial');
+        return view('backend.testimonial.add_testimonial');
     }
 
     /**
@@ -77,7 +77,7 @@ class TestimonialController extends Controller
     public function edit($id)
     {
         $about=testimonial::find($id);
-        return view('backend.update_testimonial',compact('about'));
+        return view('backend.testimonial.update_testimonial',compact('about'));
     }
 
     /**

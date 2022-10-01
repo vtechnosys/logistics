@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -21,12 +21,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('backend/css/metisMenu.css')}}">
 
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-
-
-    
 </head>
 
 <body>
@@ -54,7 +52,7 @@
                 </li>
                 
                 <li class="">
-                    <a class="" href="/about_details" aria-expanded="false">
+                    <a class="has-arrow" href="#" aria-expanded="false">
                         <div class="nav_icon_small">
                             <i class="fad fa-bring-forward menu-icon"></i>
                         </div>
@@ -62,6 +60,14 @@
                             <span>About</span>
                         </div>
                     </a>
+                    <ul class="mm-collapse">
+                        <li><a href="/about_details">About Logistics</a></li>
+                        <li><a href="/overview_details">Overview</a></li>
+                        <li><a href="/management_details">Management</a></li>
+                        <li><a href="/vision_and_mission">Vision And Mission</a></li>
+                        <li><a href="/envisioning_details">Envisioning The Future</a></li>
+                        <li><a href="/milestones_achievements">Milestones Achievements</a></li>
+                    </ul>
                 </li>
                 <li class="">
                     <a class="" href="/service_details" aria-expanded="false">
@@ -72,56 +78,18 @@
                             <span>Services</span>
                         </div>
                     </a>
+                   
                 </li>
                 <li class="">
-                    <a class="" href="/moving_details" aria-expanded="false">
+                    <a class="" href="/client_details" aria-expanded="false">
                         <div class="nav_icon_small">
                             <i class="fad fa-bring-forward menu-icon"></i>
                         </div>
                         <div class="nav_title">
-                            <span>Moving Tips</span>
+                            <span>Clients</span>
                         </div>
                     </a>
-                </li>
-                <li class="">
-                    <a class="" href="/packing_method_details" aria-expanded="false">
-                        <div class="nav_icon_small">
-                            <i class="fad fa-bring-forward menu-icon"></i>
-                        </div>
-                        <div class="nav_title">
-                            <span>Package Method</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="">
-                    <a class="" href="/packing_material_details" aria-expanded="false">
-                        <div class="nav_icon_small">
-                            <i class="fad fa-bring-forward menu-icon"></i>
-                        </div>
-                        <div class="nav_title">
-                            <span>Package Material</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="">
-                    <a class="" href="/testimonial" aria-expanded="false">
-                        <div class="nav_icon_small">
-                            <i class="fad fa-bring-forward menu-icon"></i>
-                        </div>
-                        <div class="nav_title">
-                            <span>Testimonial</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="">
-                    <a class="" href="/valuable_client" aria-expanded="false">
-                        <div class="nav_icon_small">
-                            <i class="fad fa-bring-forward menu-icon"></i>
-                        </div>
-                        <div class="nav_title">
-                            <span>Valuable Clients</span>
-                        </div>
-                    </a>
+                   
                 </li>
                 <li class="">
                     <a class="" href="/gallery_details" aria-expanded="false">
@@ -130,6 +98,36 @@
                         </div>
                         <div class="nav_title">
                             <span>Gallery</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="/career_details" aria-expanded="false">
+                        <div class="nav_icon_small">
+                            <i class="fad fa-bring-forward menu-icon"></i>
+                        </div>
+                        <div class="nav_title">
+                            <span>Career</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="/celebration_details" aria-expanded="false">
+                        <div class="nav_icon_small">
+                            <i class="fad fa-bring-forward menu-icon"></i>
+                        </div>
+                        <div class="nav_title">
+                            <span>Celebrations</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="/testimonial_details" aria-expanded="false">
+                        <div class="nav_icon_small">
+                            <i class="fad fa-bring-forward menu-icon"></i>
+                        </div>
+                        <div class="nav_title">
+                            <span>Testimonial</span>
                         </div>
                     </a>
                 </li>
@@ -241,7 +239,7 @@
     <script src="{{asset('backend/js/counter.js')}}"></script>
     <script src="{{asset('backend/js/popup.js')}}"></script>
     <script src="{{asset('backend/js/chart.js')}}"></script>
-   
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
     <script>
         $('.sidebar_icon').on('click', function() {
             $('.sidebar ,#page-content-wrapper').toggleClass('active_sidebar');
@@ -274,6 +272,8 @@
     <script>
         $(document).ready(function() {
             $('#example').DataTable();
+            $('#summernote').summernote();
+            $('#summernote1').summernote();
         });
     </script>
     <script>
@@ -341,6 +341,7 @@
             }
         });
     </script>
+     
 </body>
 
 </html>

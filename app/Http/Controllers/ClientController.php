@@ -14,7 +14,7 @@ class ClientController extends Controller
     public function index()
     {
         $about=clients::get();
-        return view('backend.display_client',compact('about'));
+        return view('backend.client.display_client',compact('about'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('backend.add_client');
+        return view('backend.client.add_client');
     }
 
     /**
@@ -41,13 +41,14 @@ class ClientController extends Controller
             $files=$request->file('file');
             $filename=$files->getClientOriginalName();
             $gallery=new clients([
+                'title'=>$request->get('title'),
                 'img'=>$filename,
                 'status'=>'active'
             ]);
             $gallery->save();
             $files->move('backend/image/',$filename);
         }  
-        return redirect('/valuable_client'); 
+        return redirect('/client_details'); 
     }
 
     /**
@@ -70,7 +71,7 @@ class ClientController extends Controller
     public function edit($id)
     {
         $gallery=clients::find($id);
-        return view('backend.update_client',compact('gallery'));
+        return view('backend.client.update_client',compact('gallery'));
     }
 
     /**
@@ -89,6 +90,7 @@ class ClientController extends Controller
             $files=$request->file('file');
             $filename=$files->getClientOriginalName();
             $gallery=clients::find($id);
+            $gallery->title=$request->get('title');
             $gallery->img=$filename;
             $gallery->status=$status;
             $gallery->update();
@@ -97,11 +99,11 @@ class ClientController extends Controller
         else
         {
             $gallery=clients::find($id);
-            
+            $gallery->title=$request->get('title');
             $gallery->status=$status;
             $gallery->update();
         }
-        return redirect('/valuable_client');
+        return redirect('/client_details');
     }
 
     /**
@@ -114,6 +116,6 @@ class ClientController extends Controller
     {
         $gallery=clients::find($id);
         $gallery->delete();
-        return redirect('/valuable_client');
+        return redirect('/client_details');
     }
 }

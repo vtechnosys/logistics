@@ -14,7 +14,7 @@ class AboutController extends Controller
     public function index()
     {
         $about=tbl_about::get();
-        return view('backend.display_about',compact('about'));
+        return view('backend.about.display_about',compact('about'));
     }
 
     /**
@@ -24,7 +24,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        return view('backend.add_about');
+        return view('backend.about.add_about');
     }
 
     /**
@@ -77,7 +77,7 @@ class AboutController extends Controller
     public function edit($id)
     {
         $about=tbl_about::find($id);
-        return view('backend.update_about',compact('about'));
+        return view('backend.about.update_about',compact('about'));
     }
 
     /**

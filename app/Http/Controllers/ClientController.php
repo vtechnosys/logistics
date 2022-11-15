@@ -35,19 +35,27 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $file=$request->hasfile('file');
-        if($file)
+        if($request->hasfile('images'))
         {
-            $files=$request->file('file');
-            $filename=$files->getClientOriginalName();
+            
+            foreach($request->file('images') as $file)
+            {
+                
+                
+                $filename=time() . '_' . $file->getClientOriginalName();
+                $file->move('backend/image/',$filename);
+                $imgData[]=$filename;
+            }
             $gallery=new clients([
-                'title'=>$request->get('title'),
-                'img'=>$filename,
-                'status'=>'active'
-            ]);
+                        'title'=>$request->get('title'),
+                        'img'=>json_encode($imgData),
+                        'status'=>'active'
+                    ]);
+
             $gallery->save();
-            $files->move('backend/image/',$filename);
+            
         }  
+        
         return redirect('/client_details'); 
     }
 
@@ -87,8 +95,14 @@ class ClientController extends Controller
         $status=$request->get('status');
         if($file)
         {
-            $files=$request->file('file');
-            $filename=$files->getClientOriginalName();
+            foreach($request->file('file') as $file)
+            {
+                
+                
+                $filename=time() . '_' . $file->getClientOriginalName();
+                $file->move('backend/image/',$filename);
+                $imgData[]=$filename;
+            }
             $gallery=clients::find($id);
             $gallery->title=$request->get('title');
             $gallery->img=$filename;
@@ -104,6 +118,8 @@ class ClientController extends Controller
             $gallery->update();
         }
         return redirect('/client_details');
+
+        
     }
 
     /**

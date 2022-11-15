@@ -111,7 +111,7 @@ class CareerController extends Controller
             $about->description=$desc;
             $about->update();
         }
-        return redirect('/career');
+        return redirect('/career_details');
 
     }
 
@@ -125,6 +125,6 @@ class CareerController extends Controller
     {
         $about=career::find($id);
         $about->delete();
-        return redirect('/career');
+        return redirect('/career_details');
     }
 }

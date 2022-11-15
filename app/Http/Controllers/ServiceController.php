@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\tbl_service;
+use App\Models\tbl_contact;
+use DB;
 class ServiceController extends Controller
 {
     /**
@@ -138,5 +140,19 @@ class ServiceController extends Controller
         $ser=tbl_service::find($id);
         $ser->delete();
         return redirect('/service_details');
+    }
+    public function contact_details()
+    {
+        $contact=DB::table('tbl_contacts')
+                    ->join('tbl_services','tbl_services.id','=','tbl_contacts.enquire_for')
+                    ->select('*','tbl_contacts.id as cid','tbl_services.name as sname','tbl_contacts.name as cname')
+                    ->get();
+        return view('backend.contact_details',compact('contact'));
+    }
+    public function contact_remove($id)
+    {
+        $contact=tbl_contact::find($id);
+        $contact->delete();
+        return redirect('/contact_details');
     }
 }

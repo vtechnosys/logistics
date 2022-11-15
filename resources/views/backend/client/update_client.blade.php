@@ -42,13 +42,27 @@
                                                                         <input type="text" class="form-control" id="inputEmail4" placeholder="Title" name="title" value="{{$gallery->title}}" required>
                                                                     </div>
 </div>
-<img src="{{asset('backend/image')}}/{{$gallery->img}}" height="100px" width="100px">
+<?php
+                                                                    $images=json_decode($gallery->img);
+                                                                    // print_r($images);
+                                                                    $str=sizeof($images);
+                                                                    //print_r($str);
+                                                                    ?>
+<?php
+                                                                            for($i=0; $i<$str; $i++)
+                                                                            {
+                                                                            ?>
+                                                                            <img src="{{asset('backend/image')}}/{{$images[$i]}}" height="50px" width="100px">
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+
                                                                 <div class="form-row">
                                                                 
                                                                     
                                                                     <div class="form-group col-md-6" style="margin-left:20px;margin-top:1%;">
                                                                         <label for="inputPassword4">Image</label>
-                                                                        <input type="file" class="form-control" id="inputPassword4" placeholder="Password" name="file">
+                                                                        <input type="file" multiple class="form-control" id="inputPassword4" placeholder="Password" name="file[]">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-row">

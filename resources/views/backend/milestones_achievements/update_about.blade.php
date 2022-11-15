@@ -33,7 +33,7 @@
                                                         <div class="card-body">
                                                             <!-- <h6 class="card-subtitle mb-2">You may also swap <code class="highlighter-rouge">.row</code> for <code class="highlighter-rouge">.form-row</code>, a variation of our standard grid row that overrides the default column gutters
                                                                 for tighter and more compact layouts.</h6> -->
-                                                            <form method="post" action="{{route('milestones_achievements.update',$about->id)}}" enctype="multipart/form-data">
+                                                            <form method="post" action="{{route('milestones_achievements_details.update',$about->id)}}" enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PATCH')
                                                                 <div class="form-row">

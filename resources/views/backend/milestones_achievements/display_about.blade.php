@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="col-md-6 mt-lg-4 mt-4">
                                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                      <a href="milestones_achievements/create" style="margin-top:4%;"><button class="btn btn-primary" >Add Milestones Achievements Details</button></a>
+                                      <a href="milestones_achievements_details/create" style="margin-top:4%;"><button class="btn btn-primary" >Add Milestones Achievements Details</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -57,9 +57,9 @@
                                                                         <td>{!! $desc !!}</td>
                                                                         <td><img src="{{asset('backend/image')}}/{{$a->img}}" height="50px" width="100px"></td>
                                                                         <td>
-                                                                        <a href="{{route('milestones_achievements.edit',$a->id)}}"><button class="btn btn-info">Update</button></a><br>
-                                                                        <!-- <a href="{{route('milestones_achievements.show',$a->id)}}"><button class="btn btn-success mt-2">Show</button></a> -->
-                                                                        <form action="{{route('milestones_achievements.destroy',$a->id)}}" method="post" style="margin-top:10%;">
+                                                                        <a href="{{route('milestones_achievements_details.edit',$a->id)}}"><button class="btn btn-info">Update</button></a><br>
+                                                                        <!-- <a href="{{route('milestones_achievements_details.show',$a->id)}}"><button class="btn btn-success mt-2">Show</button></a> -->
+                                                                        <form action="{{route('milestones_achievements_details.destroy',$a->id)}}" method="post" style="margin-top:10%;">
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button class="btn btn-danger">Delete</button>

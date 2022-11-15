@@ -54,7 +54,7 @@ class TestimonialController extends Controller
             $files->move('backend/image/',$filename);
         }
         
-        return redirect('/testimonial');
+        return redirect('/testimonial_details');
     }
 
     /**
@@ -106,11 +106,11 @@ class TestimonialController extends Controller
         else
         {
             $about=testimonial::find($id);
-            $about->name=$name;
+            $about->title=$name;
             $about->description=$desc;
             $about->update();
         }
-        return redirect('/testimonial');
+        return redirect('/testimonial_details');
     }
 
     /**
@@ -123,6 +123,6 @@ class TestimonialController extends Controller
     {
         $ser=testimonial::find($id);
         $ser->delete();
-        return redirect('/testimonial');
+        return redirect('/testimonial_details');
     }
 }

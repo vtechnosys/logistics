@@ -46,10 +46,25 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     @foreach($about as $a)
+                                                                    <?php
+                                                                    $images=json_decode($a->img);
+                                                                    // print_r($images);
+                                                                    $str=sizeof($images);
+                                                                    //print_r($str);
+                                                                    ?>
                                                                     <tr>
                                                                         <td>{{$a->id}}</td>
                                                                         <td>{{$a->title}}</td>
-                                                                        <td><img src="{{asset('backend/image')}}/{{$a->img}}" height="50px" width="100px"></td>
+                                                                        <td>
+                                                                            <?php
+                                                                            for($i=0; $i<$str; $i++)
+                                                                            {
+                                                                            ?>
+                                                                            <img src="{{asset('backend/image')}}/{{$images[$i]}}" height="50px" width="100px">
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+                                                                        </td>
                                                                         <!-- <td>{{$a->status}}</td> -->
                                                                         <td>
                                                                         <a href="{{route('client_details.edit',$a->id)}}"><button class="btn btn-primary">Update</button></a>

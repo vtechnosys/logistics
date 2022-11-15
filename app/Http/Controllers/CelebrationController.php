@@ -14,7 +14,7 @@ class CelebrationController extends Controller
     public function index()
     {
         $about=celebration::get();
-        return view('backend.celebration.display_about',compact('about'));
+        return view('backend.celebration.display_client',compact('about'));
     }
 
     /**
@@ -24,7 +24,7 @@ class CelebrationController extends Controller
      */
     public function create()
     {
-        return view('backend.celebration.add_about');
+        return view('backend.celebration.add_client');
     }
 
     /**
@@ -35,20 +35,27 @@ class CelebrationController extends Controller
      */
     public function store(Request $request)
     {
-        $file=$request->hasfile('file');
-        if($file)
+        if($request->hasfile('images'))
         {
-            $files=$request->file('file');
-            $filename=$files->getClientOriginalName();
+            
+            foreach($request->file('images') as $file)
+            {
+                
+                
+                $filename=time() . '_' . $file->getClientOriginalName();
+                $file->move('backend/image/',$filename);
+                $imgData[]=$filename;
+            }
             $gallery=new celebration([
                 'title'=>$request->get('title'),
-                'img'=>$filename,
+                'images'=>json_encode($imgData),
                 'status'=>'active'
             ]);
+
             $gallery->save();
-            $files->move('backend/image/',$filename);
+            return redirect('/celebration_details'); 
         }  
-        return redirect('/celebration_details'); 
+        
     }
 
     /**
@@ -71,7 +78,7 @@ class CelebrationController extends Controller
     public function edit($id)
     {
         $gallery=celebration::find($id);
-        return view('backend.celebration.update_about',compact('gallery'));
+        return view('backend.celebration.update_client',compact('gallery'));
     }
 
     /**
@@ -85,16 +92,22 @@ class CelebrationController extends Controller
     {
         $file=$request->hasfile('file');
         $status=$request->get('status');
-        if($file)
+        if($request->hasfile('images'))
         {
-            $files=$request->file('file');
-            $filename=$files->getClientOriginalName();
+            
+            foreach($request->file('images') as $file)
+            {
+                
+                
+                $filename=time() . '_' . $file->getClientOriginalName();
+                $file->move('backend/image/',$filename);
+                $imgData[]=$filename;
+            }
             $gallery=celebration::find($id);
             $gallery->title=$request->get('title');
-            $gallery->img=$filename;
+            $gallery->images=json_encode($imgData);
             $gallery->status=$status;
             $gallery->update();
-            $files->move('backend/image/',$filename);
         }
         else
         {

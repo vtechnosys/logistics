@@ -54,7 +54,7 @@
                                                                     <tr>
                                                                         <td>{{$a->id}}</td>
                                                                         <td>{{$a->name}}</td>
-                                                                        <td>{{$str}}</td>
+                                                                        <td>{!! $a->short_description !!}</td>
                                                                         
                                                                         <td>
                                                                         <a href="{{route('service_details.edit',$a->id)}}"><button class="btn btn-info mt-3">Update</button></a>

@@ -42,7 +42,7 @@
                                                                     </div>
                                                                     <div class="form-group col-md-6">
                                                                         <label for="inputPassword4">Image</label>
-                                                                        <input type="file" class="form-control" id="inputPassword4" placeholder="Password" name="file" required>
+                                                                        <input type="file" class="form-control" id="inputPassword4" placeholder="Password" name="images[]" required multiple>
                                                                     </div>
                                                                 </div>
                                                                 

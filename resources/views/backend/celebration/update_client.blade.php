@@ -33,7 +33,7 @@
                                                         <div class="card-body">
                                                             <!-- <h6 class="card-subtitle mb-2">You may also swap <code class="highlighter-rouge">.row</code> for <code class="highlighter-rouge">.form-row</code>, a variation of our standard grid row that overrides the default column gutters
                                                                 for tighter and more compact layouts.</h6> -->
-                                                            <form method="post" action="{{route('client_details.update',$gallery->id)}}" enctype="multipart/form-data">
+                                                            <form method="post" action="{{route('celebration_details.update',$gallery->id)}}" enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PATCH')
                                                                 <div class="form-row">
@@ -42,13 +42,26 @@
                                                                         <input type="text" class="form-control" id="inputEmail4" placeholder="Title" name="title" value="{{$gallery->title}}" required>
                                                                     </div>
 </div>
-<img src="{{asset('backend/image')}}/{{$gallery->img}}" height="100px" width="100px">
+<?php
+                                                                    $images=json_decode($gallery->images);
+                                                                    // print_r($images);
+                                                                    $str=sizeof($images);
+                                                                    //print_r($str);
+                                                                    ?>
+<?php
+                                                                            for($i=0; $i<$str; $i++)
+                                                                            {
+                                                                            ?>
+                                                                            <img src="{{asset('backend/image')}}/{{$images[$i]}}" height="50px" width="100px">
+                                                                            <?php
+                                                                            }
+                                                                            ?>
                                                                 <div class="form-row">
                                                                 
                                                                     
                                                                     <div class="form-group col-md-6" style="margin-left:20px;margin-top:1%;">
                                                                         <label for="inputPassword4">Image</label>
-                                                                        <input type="file" class="form-control" id="inputPassword4" placeholder="Password" name="file">
+                                                                        <input type="file" class="form-control" id="inputPassword4" placeholder="Password" name="images[]" multiple>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-row">

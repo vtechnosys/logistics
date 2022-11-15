@@ -66,7 +66,7 @@
                         <li><a href="/management_details">Management</a></li>
                         <li><a href="/vision_and_mission">Vision And Mission</a></li>
                         <li><a href="/envisioning_details">Envisioning The Future</a></li>
-                        <li><a href="/milestones_achievements">Milestones Achievements</a></li>
+                        <li><a href="/milestones_achievements_details">Milestones Achievements</a></li>
                     </ul>
                 </li>
                 <li class="">
@@ -131,7 +131,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="">
+                <!-- <li class="">
                     <a class="" href="/enquire_details" aria-expanded="false">
                         <div class="nav_icon_small">
                             <i class="fad fa-bring-forward menu-icon"></i>
@@ -140,7 +140,7 @@
                             <span>Enquire Details</span>
                         </div>
                     </a>
-                </li>
+                </li> -->
                 <li class="">
                     <a class="" href="/contact_details" aria-expanded="false">
                         <div class="nav_icon_small">

@@ -54,7 +54,7 @@ class MilestonesController extends Controller
             $files->move('backend/image/',$filename);
         }
         
-        return redirect('/milestones_achievements');
+        return redirect('/milestones_achievements_details');
     }
 
     /**
@@ -110,7 +110,7 @@ class MilestonesController extends Controller
             $about->description=$desc;
             $about->update();
         }
-        return redirect('/milestones_achievements');
+        return redirect('/milestones_achievements_details');
 
     }
 
@@ -124,6 +124,6 @@ class MilestonesController extends Controller
     {
         $about=milestones_achievement::find($id);
         $about->delete();
-        return redirect('/milestones_achievements');
+        return redirect('/milestones_achievements_details');
     }
 }

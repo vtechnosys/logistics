@@ -8,12 +8,12 @@
                             <div class="row">
                                 <div class="col-md-6 mt-lg-4 mt-4">
                                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                        <h1 class="h3 mb-0 text-gray-800" style="margin-top:4%;margin-left:3%;">Clients Details</h1>
+                                        <h1 class="h3 mb-0 text-gray-800" style="margin-top:4%;margin-left:3%;">Celebration Details</h1>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mt-lg-4 mt-4">
                                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                      <a href="client_details/create" style="margin-top:4%;"><button class="btn btn-primary" >Add Clients</button></a>
+                                      <a href="celebration_details/create" style="margin-top:4%;"><button class="btn btn-primary" >Add Celebration</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -46,14 +46,29 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     @foreach($about as $a)
+                                                                    <?php
+                                                                    $images=json_decode($a->images);
+                                                                    // print_r($images);
+                                                                    $str=sizeof($images);
+                                                                    //print_r($str);
+                                                                    ?>
                                                                     <tr>
                                                                         <td>{{$a->id}}</td>
                                                                         <td>{{$a->title}}</td>
-                                                                        <td><img src="{{asset('backend/image')}}/{{$a->img}}" height="50px" width="100px"></td>
+                                                                        <td>
+                                                                            <?php
+                                                                            for($i=0; $i<$str; $i++)
+                                                                            {
+                                                                            ?>
+                                                                            <img src="{{asset('backend/image')}}/{{$images[$i]}}" height="50px" width="100px">
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+                                                                        </td>
                                                                         <!-- <td>{{$a->status}}</td> -->
                                                                         <td>
-                                                                        <a href="{{route('client_details.edit',$a->id)}}"><button class="btn btn-primary">Update</button></a>
-                                                                            <form action="{{route('client_details.destroy',$a->id)}}" method="post" style="margin-top:5%;">
+                                                                        <a href="{{route('celebration_details.edit',$a->id)}}"><button class="btn btn-primary">Update</button></a>
+                                                                            <form action="{{route('celebration_details.destroy',$a->id)}}" method="post" style="margin-top:5%;">
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button class="btn btn-danger">Delete</button>

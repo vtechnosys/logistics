@@ -33,7 +33,7 @@
                                                         <div class="card-body">
                                                             <!-- <h6 class="card-subtitle mb-2">You may also swap <code class="highlighter-rouge">.row</code> for <code class="highlighter-rouge">.form-row</code>, a variation of our standard grid row that overrides the default column gutters
                                                                 for tighter and more compact layouts.</h6> -->
-                                                            <form method="post" action="{{route('overview_details.update',$about->id)}}" enctype="multipart/form-data">
+                                                            <form method="post" action="{{route('career_details.update',$about->id)}}" enctype="multipart/form-data">
                                                                 @csrf
                                                                 @method('PATCH')
                                                                 <div class="form-row">
@@ -49,7 +49,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="inputAddress">Description</label>
-                                                                    <textarea type="text" class="form-control" id="inputAddress" placeholder="Description" id="code_preview0" rows="10" name="desc"  value="{{$about->description}}">{{$about->description}}</textarea>
+                                                                    <textarea type="text" class="form-control" id="summernote" placeholder="Description" rows="10" name="desc"  value="{{$about->description}}">{{$about->description}}</textarea>
                                                                 </div>
                                                                 
                                                                 <button type="submit" class="btn btn-primary">Submit</button>
